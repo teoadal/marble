@@ -5,7 +5,7 @@
 
 Based on [MediatR](https://github.com/jbogard/MediatR).
 
-Three times faster than MediatR.
+Three times faster than MediatR. Infrastructure should not slow down.
 
 ## Performance
 
@@ -14,7 +14,7 @@ Three times faster than MediatR.
 | MediatR | 86.66 μs | 0.462 μs | 0.386 μs |  1.00 | 12.2070 |     - |     - |  75.31 KB |
 |  Marble | 21.17 μs | 0.068 μs | 0.053 μs |  0.24 |  1.4038 |     - |     - |   8.74 KB |
 
-* Five request handlers, behaviour, two pre processors and one post processor
+Five request handlers, behaviour, two pre processors and one post processor
 
 ## Install from nuget
 
@@ -30,5 +30,18 @@ Scans assemblies and adds handlers, preprocessors, behaviours and postprocessors
 To use, with an IServiceCollection instance:
 
 ```cs
-.AddMediator(typeof(MeHandler).Assembly)
+services.AddMediator(typeof(MyHandler).Assembly)
 ```
+
+### Add concrete mediator parts
+
+```cs
+services.AddMediator(typeof(MyHandler), typeof(MyPreProcessor), typeof(YourHandler))
+```
+
+### Scan registered services and register request
+
+```cs
+services.AddMediator(options => options.RegisterRequest<MyRequest>())
+```
+
