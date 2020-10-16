@@ -27,7 +27,7 @@ Install-Package Marble
 ## Add mediator
 
 Scans assemblies and adds handlers, preprocessors, behaviours and postprocessors implementations to the container. 
-To use, with an IServiceCollection instance:
+To use, with an `IServiceCollection` instance:
 
 ```cs
 services.AddMediator(typeof(MyHandler).Assembly)
