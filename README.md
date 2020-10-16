@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/teoadal/marble/branch/master/graph/badge.svg)](https://codecov.io/gh/teoadal/marble)
 
 Based on [MediatR](https://github.com/jbogard/MediatR).
-Improved mediator implementation in .NET.
+
 Three times faster than MediatR.
 
 ## Performance
@@ -13,6 +13,8 @@ Three times faster than MediatR.
 |-------- |---------:|---------:|---------:|------:|--------:|------:|------:|----------:|
 | MediatR | 86.66 μs | 0.462 μs | 0.386 μs |  1.00 | 12.2070 |     - |     - |  75.31 KB |
 |  Marble | 21.17 μs | 0.068 μs | 0.053 μs |  0.24 |  1.4038 |     - |     - |   8.74 KB |
+
+* Five request handlers, behaviour, two pre processors and one post processor
 
 ## Install from nuget
 
