@@ -3,7 +3,9 @@
 [![.NET Core](https://github.com/teoadal/marble/workflows/.NET%20Core/badge.svg?branch=master)](https://github.com/teoadal/marble/actions)
 [![codecov](https://codecov.io/gh/teoadal/marble/branch/master/graph/badge.svg)](https://codecov.io/gh/teoadal/marble)
 
-Improved mediator implementation in .NET
+Based on [MediatR](https://github.com/jbogard/MediatR).
+Improved mediator implementation in .NET.
+Three times faster than MediatR.
 
 ## Performance
 
