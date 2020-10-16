@@ -7,7 +7,7 @@ Improved mediator implementation in .NET
 
 ## Install from nuget
 
-Install Velo with the following command [from nuget](https://www.nuget.org/packages/Velo/):
+Install Marble with the following command [from nuget](https://www.nuget.org/packages/marble/):
 
 ```ini
 Install-Package Marble
