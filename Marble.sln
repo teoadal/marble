@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marble", "Marble\Marble.csproj", "{8D6C6898-CF2D-4640-99BF-E33B8DB15D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marble.Tests", "Marble.Tests\Marble.Tests.csproj", "{9D80AB0C-38D5-49E6-8FF1-009478BEDA24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marble.Benchmarks", "Marble.Benchmarks\Marble.Benchmarks.csproj", "{751312FC-4CD6-4CA4-839D-0817ABDBB636}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D6C6898-CF2D-4640-99BF-E33B8DB15D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D6C6898-CF2D-4640-99BF-E33B8DB15D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D6C6898-CF2D-4640-99BF-E33B8DB15D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D6C6898-CF2D-4640-99BF-E33B8DB15D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D80AB0C-38D5-49E6-8FF1-009478BEDA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D80AB0C-38D5-49E6-8FF1-009478BEDA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D80AB0C-38D5-49E6-8FF1-009478BEDA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D80AB0C-38D5-49E6-8FF1-009478BEDA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{751312FC-4CD6-4CA4-839D-0817ABDBB636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{751312FC-4CD6-4CA4-839D-0817ABDBB636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{751312FC-4CD6-4CA4-839D-0817ABDBB636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{751312FC-4CD6-4CA4-839D-0817ABDBB636}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
