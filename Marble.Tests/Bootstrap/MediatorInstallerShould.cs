@@ -33,6 +33,26 @@ namespace Marble.Tests.Bootstrap
         }
 
         [Fact]
+        public void AddMediatorAgain()
+        {
+            _services
+                .AddMediator(options => { })
+                .AddMediator(options => { });
+
+            _services
+                .Should().ContainSingle(descriptor => descriptor.ServiceType == typeof(IMediator));
+        }
+        
+        [Fact]
+        public void AddPublisher()
+        {
+            _services.AddMediator(options => { });
+
+            _services
+                .Should().Contain(descriptor => descriptor.ServiceType == typeof(IPublisher));
+        }
+        
+        [Fact]
         public void AddServiceFactory()
         {
             _services.AddMediator(options => { });
@@ -42,6 +62,15 @@ namespace Marble.Tests.Bootstrap
                     .ServiceType == typeof(ServiceFactory));
         }
 
+        [Fact]
+        public void AddSender()
+        {
+            _services.AddMediator(options => { });
+
+            _services
+                .Should().Contain(descriptor => descriptor.ServiceType == typeof(ISender));
+        }
+        
         [Fact]
         public void RegisterConcretePart()
         {
@@ -136,6 +165,14 @@ namespace Marble.Tests.Bootstrap
                 .Should().ContainInOrder(typeof(PreProcessor1), typeof(PreProcessor2));
         }
 
+        [Fact]
+        public void ThrowIfHandlerIsNotRegistered()
+        {
+            _services
+                .Invoking(services => services.AddMediator(typeof(PreProcessor1), typeof(PostProcessor)))
+                .Should().Throw<HandlerNotFoundException>();
+        }
+        
         public static TheoryData<ServiceLifetime> Lifetimes = new TheoryData<ServiceLifetime>
         {
             ServiceLifetime.Singleton,

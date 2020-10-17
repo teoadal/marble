@@ -45,7 +45,9 @@ namespace Marble.Tests.Notifications
 
             foreach (var handler in _handlers)
             {
-                handler.Verify(h => h.Handle(_notification, default), Times.Once);
+                handler
+                    .Verify(h => h
+                        .Handle(_notification, default), Times.Once);
             }
         }
 
@@ -53,12 +55,14 @@ namespace Marble.Tests.Notifications
         public void HandleNotificationAsObject()
         {
             _mediator
-                .Awaiting(mediator => mediator.Publish((object)_notification))
+                .Awaiting(mediator => mediator.Publish((object) _notification))
                 .Should().NotThrow();
 
             foreach (var handler in _handlers)
             {
-                handler.Verify(h => h.Handle(_notification, default), Times.Once);
+                handler
+                    .Verify(h => h
+                        .Handle(_notification, default), Times.Once);
             }
         }
     }

@@ -13,8 +13,7 @@ namespace Marble
             return (T[]) factory(typeof(IEnumerable<T>));
         }
 
-        public static bool TryDefineLifetime(this IServiceCollection services, Type implementation,
-            out ServiceLifetime lifetime)
+        public static bool TryDefineLifetime(this IServiceCollection services, Type implementation, out ServiceLifetime lifetime)
         {
             var result = (int) ServiceLifetime.Singleton;
 

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Marble.Bootstrap
 {
@@ -18,10 +19,15 @@ namespace Marble.Bootstrap
                 return services;
             }
 
+            var mediatorLifetime = options.Lifetime;
+
             services
                 .AddScoped<ServiceFactory>(provider => provider.GetService)
                 .AddSingleton(new PipelineCollection())
-                .Add(new ServiceDescriptor(typeof(IMediator), typeof(Mediator), options.Lifetime));
+                .Add(new ServiceDescriptor(typeof(IMediator), typeof(Mediator), mediatorLifetime));
+
+            services.Add(new ServiceDescriptor(typeof(ISender), ResolveMediator, mediatorLifetime));
+            services.Add(new ServiceDescriptor(typeof(IPublisher), ResolveMediator, mediatorLifetime));
 
             return services;
         }
@@ -30,10 +36,15 @@ namespace Marble.Bootstrap
         {
             return AddMediator(services, options => options.RegisterParts(assemblies));
         }
-        
+
         public static IServiceCollection AddMediator(this IServiceCollection services, params Type[] mediatorParts)
         {
             return AddMediator(services, options => options.RegisterParts(mediatorParts));
+        }
+
+        private static IMediator ResolveMediator(IServiceProvider provider)
+        {
+            return (IMediator) provider.GetService(typeof(IMediator));
         }
     }
 }

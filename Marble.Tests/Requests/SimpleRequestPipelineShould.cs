@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using FluentAssertions;
 using Marble.Tests.Fakes.Requests;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +30,7 @@ namespace Marble.Tests.Requests
             _handler.Verify(handler => handler
                 .Handle(_request, default), Times.Once);
         }
-        
+
         [Fact]
         public void ProcessRequestAsObject()
         {
@@ -37,6 +39,13 @@ namespace Marble.Tests.Requests
             _handler
                 .Verify(handler => handler
                     .Handle(_request, default), Times.Once);
+        }
+
+        [Fact]
+        public async Task ReturnResult()
+        {
+            var response = await _mediator.Send(_request);
+            response.Should().Be(_response);
         }
     }
 }

@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using FluentAssertions;
 using Marble.Tests.Fakes.Requests;
 using MediatR;
 using MediatR.Pipeline;
@@ -163,6 +165,13 @@ namespace Marble.Tests.Requests
                     .Verify(p => p
                         .Process(_request, _response, default), Times.Once);
             }
+        }
+
+        [Fact]
+        public async Task ReturnResult()
+        {
+            var response = await _mediator.Send(_request);
+            response.Should().Be(_response);
         }
     }
 }

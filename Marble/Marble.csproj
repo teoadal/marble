@@ -15,6 +15,7 @@
         <PackageTags>mediator;request;response;queries;commands;notifications</PackageTags>
         <PackageProjectUrl>https://github.com/teoadal/marble</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>

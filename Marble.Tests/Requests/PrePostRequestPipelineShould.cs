@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using FluentAssertions;
 using Marble.Tests.Fakes.Requests;
 using MediatR;
 using MediatR.Pipeline;
@@ -63,7 +65,7 @@ namespace Marble.Tests.Requests
                         .Process(_request, default), Times.Once);
             }
         }
-        
+
         [Fact]
         public void ProcessRequest()
         {
@@ -82,7 +84,7 @@ namespace Marble.Tests.Requests
                 .Verify(handler => handler
                     .Handle(_request, default), Times.Once);
         }
-        
+
         [Fact]
         public void PostProcessRequest()
         {
@@ -92,7 +94,7 @@ namespace Marble.Tests.Requests
                 .Verify(processor => processor
                     .Process(_request, _response, default), Times.Once);
         }
-        
+
         [Fact]
         public void PostProcessMany()
         {
@@ -118,6 +120,13 @@ namespace Marble.Tests.Requests
                     .Verify(p => p
                         .Process(_request, _response, default), Times.Once);
             }
+        }
+
+        [Fact]
+        public async Task ReturnResult()
+        {
+            var response = await _mediator.Send(_request);
+            response.Should().Be(_response);
         }
     }
 }

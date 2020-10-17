@@ -34,7 +34,9 @@ namespace Marble.Tests.Notifications
                 .Awaiting(mediator => mediator.Publish(_notification))
                 .Should().NotThrow();
 
-            _handler.Verify(handler => handler.Handle(_notification, default), Times.Once);
+            _handler
+                .Verify(handler => handler
+                    .Handle(_notification, default), Times.Once);
         }
 
         [Fact]
@@ -44,8 +46,9 @@ namespace Marble.Tests.Notifications
                 .Awaiting(mediator => mediator.Publish(_notification))
                 .Should().NotThrow();
 
-            _handler.Verify(handler => handler.Handle(_notification, default), Times.Once);
-
+            _handler
+                .Verify(handler => handler
+                    .Handle(_notification, default), Times.Once);
         }
     }
 }
