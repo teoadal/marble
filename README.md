@@ -11,12 +11,19 @@ Three times faster than MediatR. Infrastructure should not slow down.
 
 ## Performance
 
+### Five request handlers, behaviour, two pre processors and one post processor
+
 |  Method |     Mean |    Error |   StdDev | Ratio |   Gen 0 | Gen 1 | Gen 2 | Allocated |
 |-------- |---------:|---------:|---------:|------:|--------:|------:|------:|----------:|
 | MediatR | 86.66 μs | 0.462 μs | 0.386 μs |  1.00 | 12.2070 |     - |     - |  75.31 KB |
 |  Marble | 21.17 μs | 0.068 μs | 0.053 μs |  0.24 |  1.4038 |     - |     - |   8.74 KB |
 
-Five request handlers, behaviour, two pre processors and one post processor
+### One request handler
+
+|  Method |      Mean |     Error |    StdDev | Ratio |  Gen 0 | Gen 1 | Gen 2 | Allocated |
+|-------- |----------:|----------:|----------:|------:|-------:|------:|------:|----------:|
+| MediatR | 11.893 us | 0.1340 us | 0.1253 us |  1.00 | 2.3346 |     - |     - |  14.37 KB |
+|  Marble |  1.702 us | 0.0085 us | 0.0075 us |  0.14 | 0.1640 |     - |     - |   1.01 KB |
 
 ## Install from nuget
 
