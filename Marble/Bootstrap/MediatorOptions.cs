@@ -15,7 +15,7 @@ namespace Marble.Bootstrap
 
         public MediatorOptions(IServiceCollection services)
         {
-            Lifetime = ServiceLifetime.Singleton;
+            Lifetime = ServiceLifetime.Scoped;
             Services = services;
             _registrar = new MediatorRegistrar();
         }

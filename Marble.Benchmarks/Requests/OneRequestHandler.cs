@@ -1,37 +1,36 @@
-using System.Reflection;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
-using Marble.Benchmarks.Fakes.Notifications;
-using Marble.Bootstrap;
+using Marble.Benchmarks.Fakes.Requests;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Marble.Benchmarks
+namespace Marble.Benchmarks.Requests
 {
     [SimpleJob(RuntimeMoniker.NetCoreApp31)]
     [MarkdownExporterAttribute.GitHub]
     [MeanColumn, MemoryDiagnoser]
-    public class Notifications
+    public class OneRequestHandler
     {
         private IMediator _mediatr;
         private IMediator _marble;
-        private Notification _notification;
+        private Request _request;
 
         [GlobalSetup]
         public void Init()
         {
             _mediatr = new ServiceCollection()
-                .AddMediatR(Assembly.GetExecutingAssembly())
+                .AddTransient<IRequestHandler<Request, RequestResponse>, RequestHandler>() // MediatR add as transient
+                .AddMediatR(typeof(int).Assembly)
                 .BuildServiceProvider()
                 .GetRequiredService<IMediator>();
 
             _marble = new ServiceCollection()
-                .AddMediator(mediator => mediator.RegisterPartsFromExecutingAssembly())
+                .AddMediator(typeof(RequestHandler))
                 .BuildServiceProvider()
                 .GetRequiredService<IMediator>();
 
-            _notification = new Notification();
+            _request = new Request();
         }
 
         [Benchmark(Baseline = true)]
@@ -40,9 +39,8 @@ namespace Marble.Benchmarks
             var sum = 0;
             for (var i = 0; i < 10; i++)
             {
-                var task = _mediatr.Publish(_notification);
-                await task;
-                sum += task.Id;
+                var response = await _mediatr.Send(_request);
+                sum += response.Value;
             }
 
             return sum;
@@ -54,9 +52,8 @@ namespace Marble.Benchmarks
             var sum = 0;
             for (var i = 0; i < 10; i++)
             {
-                var task = _marble.Publish(_notification);
-                await task;
-                sum += task.Id;
+                var response = await _marble.Send(_request);
+                sum += response.Value;
             }
 
             return sum;

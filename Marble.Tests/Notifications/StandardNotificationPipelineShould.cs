@@ -1,5 +1,4 @@
 using FluentAssertions;
-using Marble.Bootstrap;
 using Marble.Tests.Fakes.Notifications;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

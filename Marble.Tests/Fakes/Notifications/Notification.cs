@@ -2,7 +2,7 @@ using MediatR;
 
 namespace Marble.Tests.Fakes.Notifications
 {
-    public class Notification : INotification
+    public sealed class Notification : INotification
     {
     }
 }

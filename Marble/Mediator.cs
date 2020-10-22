@@ -26,6 +26,13 @@ namespace Marble
 
         public Task<object?> Send(object request, CancellationToken cancellationToken)
         {
+            var requestType = request.GetType();
+
+            if (!typeof(IBaseRequest).IsAssignableFrom(requestType))
+            {
+                throw new ArgumentException($"Type {requestType.Name} isn't implemented {nameof(IRequest)}");
+            }
+
             var pipeline = _pipelineCollection.GetRequestPipeline(request.GetType(), _serviceFactory);
             return pipeline.Process(request, _serviceFactory, cancellationToken);
         }
@@ -36,7 +43,7 @@ namespace Marble
 
             if (!typeof(INotification).IsAssignableFrom(notificationType))
             {
-                throw new InvalidOperationException($"Type {notificationType.Name} isn't implemented INotification");
+                throw new ArgumentException($"Type {notificationType.Name} isn't implemented {nameof(INotification)}");
             }
 
             var pipeline = _pipelineCollection.GetNotificationPipeline(notificationType, _serviceFactory);
@@ -47,8 +54,7 @@ namespace Marble
             where TNotification : INotification
         {
             var pipeline = _pipelineCollection.GetNotificationPipeline(typeof(TNotification), _serviceFactory);
-            return ((INotificationPipeline<TNotification>) pipeline).Process(notification, _serviceFactory,
-                cancellationToken);
+            return ((INotificationPipeline<TNotification>) pipeline).Process(notification, _serviceFactory, cancellationToken);
         }
     }
 }

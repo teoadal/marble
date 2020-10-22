@@ -1,7 +1,7 @@
 namespace Marble.Benchmarks.Fakes.Requests
 {
-    public class RequestResponse
+    public sealed class RequestResponse
     {
-        public int Value { get; set; }
+        public int Value;
     }
 }

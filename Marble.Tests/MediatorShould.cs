@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Marble.Bootstrap;
 using Marble.Tests.Fakes.Notifications;
 using Marble.Tests.Fakes.Requests;
 using MediatR;
@@ -107,8 +106,8 @@ namespace Marble.Tests
         public void ThrowIfRequestNotImplementedInterface()
         {
             _mediator
-                .Awaiting(mediator => mediator.Send(new NotRegisteredNotification()))
-                .Should().Throw<InvalidOperationException>();
+                .Awaiting(mediator => mediator.Send(new object()))
+                .Should().Throw<ArgumentException>();
         }
 
         [Fact]
@@ -123,8 +122,8 @@ namespace Marble.Tests
         public void ThrowIfNotificationNotImplementedInterface()
         {
             _mediator
-                .Awaiting(mediator => mediator.Publish(new NotRegisteredRequest()))
-                .Should().Throw<InvalidOperationException>();
+                .Awaiting(mediator => mediator.Publish(new object()))
+                .Should().Throw<ArgumentException>();
         }
     }
 }

@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Marble.Benchmarks.Fakes.Requests
 {
-    public class RequestHandler4 : RequestHandler<Request4, int>
+    public sealed class RequestHandler4 : RequestHandler<Request4, int>
     {
         protected override int Handle(Request4 request)
         {

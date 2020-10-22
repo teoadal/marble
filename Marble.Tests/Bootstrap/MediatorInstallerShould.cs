@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
-using Marble.Bootstrap;
+using Marble.Tests.Fakes;
 using Marble.Tests.Fakes.Notifications;
 using Marble.Tests.Fakes.Requests;
 using MediatR;
@@ -15,12 +15,14 @@ namespace Marble.Tests.Bootstrap
     public class MediatorInstallerShould
     {
         private readonly Assembly _currentAssembly;
-        private readonly ServiceCollection _services;
+        private readonly IServiceCollection _services;
 
         public MediatorInstallerShould()
         {
             _currentAssembly = typeof(MediatorInstallerShould).Assembly;
-            _services = new ServiceCollection();
+            _services = new ServiceCollection()
+                .AddTransient<IFakeService, FakeService>()
+                .AddScoped<IFakeService2, FakeService2>();
         }
 
         [Fact]

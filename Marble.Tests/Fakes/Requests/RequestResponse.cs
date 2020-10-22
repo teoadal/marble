@@ -1,6 +1,6 @@
 namespace Marble.Tests.Fakes.Requests
 {
-    public class RequestResponse
+    public sealed class RequestResponse
     {
     }
 }

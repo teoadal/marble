@@ -8,6 +8,17 @@ namespace Marble
 {
     internal static class ServiceCollectionExtensions
     {
+        public static bool Contains(this IServiceCollection services, Type serviceType)
+        {
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (var service in services)
+            {
+                if (service.ServiceType == serviceType) return true;
+            }
+
+            return false;
+        }
+        
         public static T[] GetArray<T>(this ServiceFactory factory)
         {
             return (T[]) factory(typeof(IEnumerable<T>));

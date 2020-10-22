@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Marble.Attributes;
@@ -8,18 +7,16 @@ using MediatR.Pipeline;
 namespace Marble.Tests.Fakes.Requests
 {
     [Ordering(1)]
-    public class PreProcessor1 : IRequestPreProcessor<Request>
+    public sealed class PreProcessor1 : IRequestPreProcessor<Request>
     {
-        // for testing
-        private readonly IMediator _mediator;
-        private readonly IServiceProvider _provider;
-        private readonly IPublisher _publisher;
-
-        public PreProcessor1(IMediator mediator, IServiceProvider provider, IPublisher publisher)
+        // for testing DI
+        // ReSharper disable UnusedParameter.Local
+        public PreProcessor1(
+                IMediator mediator,
+                IPublisher publisher,
+                ISender sender)
+        // ReSharper restore UnusedParameter.Local
         {
-            _mediator = mediator;
-            _provider = provider;
-            _publisher = publisher;
         }
 
         public Task Process(Request request, CancellationToken cancellationToken)

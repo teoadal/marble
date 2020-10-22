@@ -1,7 +1,6 @@
 using System.Reflection;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
-using Marble.Bootstrap;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

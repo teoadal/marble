@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Marble.Benchmarks.Fakes.Requests
 {
-    public class RequestHandler3 : AsyncRequestHandler<Request3>
+    public sealed class RequestHandler3 : AsyncRequestHandler<Request3>
     {
         protected override Task Handle(Request3 request, CancellationToken cancellationToken)
         {

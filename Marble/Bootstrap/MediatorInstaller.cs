@@ -1,11 +1,12 @@
 using System;
-using System.Linq;
 using System.Reflection;
+using Marble;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Marble.Bootstrap;
+using Mediator = Marble.Mediator;
 
-namespace Marble.Bootstrap
+// ReSharper disable once CheckNamespace
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class MediatorInstaller
     {
@@ -14,7 +15,7 @@ namespace Marble.Bootstrap
             var options = new MediatorOptions(services);
             config(options);
 
-            if (services.Any(descriptor => descriptor.ServiceType == typeof(IMediator)))
+            if (services.Contains(typeof(IMediator)))
             {
                 return services;
             }

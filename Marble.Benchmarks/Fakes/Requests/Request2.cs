@@ -2,8 +2,8 @@ using MediatR;
 
 namespace Marble.Benchmarks.Fakes.Requests
 {
-    public class Request2 : IRequest<int>
+    public sealed class Request2 : IRequest<int>
     {
-        public int Value { get; set; }
+        public int Value;
     }
 }

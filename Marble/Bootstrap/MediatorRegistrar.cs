@@ -110,6 +110,7 @@ namespace Marble.Bootstrap
             if (pipelineDefinition == null)
             {
                 var partDefinitions = new List<Type>();
+                // ReSharper disable once LoopCanBeConvertedToQuery
                 foreach (var descriptor in services)
                 {
                     var serviceType = descriptor.ServiceType;

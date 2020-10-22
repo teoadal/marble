@@ -8,7 +8,7 @@ using MediatR.Pipeline;
 namespace Marble.Benchmarks.Fakes.Requests
 {
     [Ordering(2)]
-    public class PreProcessor : IRequestPreProcessor<Request>
+    public sealed class PreProcessor : IRequestPreProcessor<Request>
     {
         private readonly IMediator _mediator;
 
@@ -22,7 +22,7 @@ namespace Marble.Benchmarks.Fakes.Requests
             var request2 = new Request2();
             var response = await _mediator.Send(request2, cancellationToken);
 
-            var notification = new Notification {Value = request.Value};
+            var notification = new Alert {Value = request.Value};
             await _mediator.Publish(notification, cancellationToken);
 
             request.Value += (response + request2.Value) / notification.Value;

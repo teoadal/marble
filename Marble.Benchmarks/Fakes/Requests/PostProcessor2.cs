@@ -5,7 +5,7 @@ using MediatR.Pipeline;
 
 namespace Marble.Benchmarks.Fakes.Requests
 {
-    public class PostProcessor2 : IRequestPostProcessor<Request2, int>
+    public sealed class PostProcessor2 : IRequestPostProcessor<Request2, int>
     {
         private readonly IMediator _mediator;
 

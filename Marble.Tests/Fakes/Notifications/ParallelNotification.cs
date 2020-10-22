@@ -4,7 +4,7 @@ using MediatR;
 namespace Marble.Tests.Fakes.Notifications
 {
     [Parallel]
-    public class ParallelNotification : INotification
+    public sealed class ParallelNotification : INotification
     {
     }
 }

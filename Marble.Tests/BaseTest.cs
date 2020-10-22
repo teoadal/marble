@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using FluentAssertions;
-using Marble.Bootstrap;
 using Marble.Tests.Fakes.Requests;
 using MediatR;
 using MediatR.Pipeline;

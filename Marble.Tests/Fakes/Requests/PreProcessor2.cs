@@ -6,7 +6,7 @@ using MediatR.Pipeline;
 namespace Marble.Tests.Fakes.Requests
 {
     [Ordering(2)]
-    public class PreProcessor2 : IRequestPreProcessor<Request>
+    public sealed class PreProcessor2 : IRequestPreProcessor<Request>
     {
         public Task Process(Request request, CancellationToken cancellationToken)
         {

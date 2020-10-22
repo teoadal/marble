@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Marble.Tests.Fakes.Notifications
 {
-    public class NotificationHandler : INotificationHandler<Notification>
+    public sealed class NotificationHandler : INotificationHandler<Notification>
     {
         public Task Handle(Notification notification, CancellationToken cancellationToken)
         {
