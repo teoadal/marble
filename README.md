@@ -32,6 +32,12 @@ Three times faster than MediatR. Infrastructure should not slow down.
 | MediatR |  6.778 us | 0.1116 us | 0.1044 us |  1.00 | 1.1292 |     - |     - |    7112 B |
 |  Marble |  4.262 us | 0.0298 us | 0.0264 us |  **0.63** | 0.1068 |     - |     - |     712 B |
 
+#### One notification handler
+
+|  Method |     Mean |     Error |    StdDev | Ratio |  Gen 0 | Gen 1 | Gen 2 | Allocated |
+|-------- |---------:|----------:|----------:|------:|-------:|------:|------:|----------:|
+| MediatR | 3.249 us | 0.0342 us | 0.0320 us |  1.00 | 0.5569 |     - |     - |    3512 B |
+|  Marble | 1.574 us | 0.0141 us | 0.0117 us |  0.48 | 0.0114 |     - |     - |      72 B |
 
 ## Install from nuget
 
