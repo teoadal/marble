@@ -27,7 +27,7 @@ Three times faster than MediatR. Infrastructure should not slow down.
 
 #### Notification handlers
 
-|  Method | HandlersCount |      Mean |     Error |    StdDev | Ratio |  Gen 0 | Gen 1 | Gen 2 | Allocated |
+|  Method | Handlers |      Mean |     Error |    StdDev | Ratio |  Gen 0 | Gen 1 | Gen 2 | Allocated |
 |-------- |-------------- |----------:|----------:|----------:|------:|-------:|------:|------:|----------:|
 | MediatR |             5 |  6.778 us | 0.1116 us | 0.1044 us |  1.00 | 1.1292 |     - |     - |    7112 B |
 |  Marble |             5 |  4.262 us | 0.0298 us | 0.0264 us |  **0.63** | 0.1068 |     - |     - |     712 B |
