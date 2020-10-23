@@ -28,7 +28,7 @@ namespace Marble.Benchmarks.Notifications
                 .GetRequiredService<IMediator>();
 
             _marble = CreateServiceCollectionWithNotificationHandlers(HandlersCount)
-                .AddMediator(options => options.RegisterNotification<Notification>())
+                .AddMediator(mediator => mediator.RegisterNotification<Notification>())
                 .BuildServiceProvider()
                 .GetRequiredService<IMediator>();
 
