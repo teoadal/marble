@@ -4,6 +4,7 @@
 [![codecov](https://codecov.io/gh/teoadal/marble/branch/master/graph/badge.svg)](https://codecov.io/gh/teoadal/marble)
 [![NuGet](https://img.shields.io/nuget/v/marble.svg)](https://www.nuget.org/packages/marble) 
 [![NuGet](https://img.shields.io/nuget/dt/marble.svg)](https://www.nuget.org/packages/marble)
+[![CodeFactor](https://www.codefactor.io/repository/github/teoadal/marble/badge/master)](https://www.codefactor.io/repository/github/teoadal/marble/overview/master)
 
 Based on [MediatR](https://github.com/jbogard/MediatR).
 
